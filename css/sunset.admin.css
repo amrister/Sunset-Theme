@@ -1,0 +1,37 @@
+/*
+  @package Sunset-theme
+*/
+.page-cont{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.page-cont *>{
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+.sidebar-preview{
+  margin: 42px 0 0 50px;
+  width: 250px;
+  background-color: #1f1f1f;
+  padding: 20px;
+  text-align: center;
+  height: 500px;
+  color: #fff;
+}
+.sidebar-preview h2{
+  color: #fff;
+}
+.sidebar-preview .image{
+  width: 124px;
+  height: 124px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 20px auto;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.sidebar-preview .image img{
+  width: 100%;
+}

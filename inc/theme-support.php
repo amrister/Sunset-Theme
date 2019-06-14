@@ -34,6 +34,7 @@
   }
   add_action( 'init', 'sunset_theme_support_options');
 
+
 /*
   =========================================
    Activate Menus
@@ -43,3 +44,4 @@ function sunset_register_header_menu(){
   register_nav_menu('primary', 'Header nav menu');
 }
 add_action( 'after_setup_theme','sunset_register_header_menu');
+
