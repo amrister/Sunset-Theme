@@ -1,0 +1,104 @@
+/* ----------------------------- Start Global -----------------------------*/
+body{
+  font-family: 'Raleway', sans-serif;
+}
+a{
+
+  @include animate(color,220ms);    
+  &:focus,&:hover{
+    text-decoration: none;
+  }
+}
+/* ----------------------------- End Global -----------------------------*/
+/* ----------------------------- Start Framework -----------------------------*/
+.background-image{
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.table{
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+.table-cell{
+  display: table-cell;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+}
+.site-title{
+  margin: 0;
+  font-size: 80px;
+}
+.site-description{
+  font-size: 14px;
+  margin-top: 1em;
+}
+.image{
+  width: 100%;
+  img{
+    width: 100%;
+  }
+}
+.btn{
+  padding:6px 10px 4px;
+  text-transform: uppercase;
+  background-color: transparent;
+  border-radius: 0; 
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  border-color: transparent;
+  &:hover{
+    background-color: transparent;
+    border-color: transparent;
+  }
+}
+.btn-gray{
+  border-color: $lightGray;
+  color: $lightGray;
+  &:hover{
+    color: #fff;
+    border-color: $darkGray;
+    background-color: $darkGray;
+  } 
+}
+.overlay{
+  position: relative;
+  &:after{
+    content:"";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.10);
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.35);
+    @include animate(background,320ms);
+  }
+}
+.share-icon{
+      position: absolute;
+      background-color: rgba(#000,0.4);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      top: 7px;
+      right: 7px;
+      z-index: 5;
+      text-align: center;
+      line-height: 30px;
+      span{
+        color: #fff;
+        font-size: 14px;
+      }
+    }
+  .no-wrapers{
+      &:after,&:before{
+        display: none !important; 
+      }
+  }
+/* ----------------------------- End Framework -----------------------------*/
