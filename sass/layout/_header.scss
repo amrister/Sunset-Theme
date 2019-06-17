@@ -6,6 +6,7 @@
 }
 .header-content {
   color: #fff;
+
   @extend %textShadow;
 }
 .nav-container{
@@ -38,6 +39,10 @@
 		  @include transfor( translateY(0px));
 	  	} 
 	  }
+      border-color: rgba(#fff,0.7);
+      a{
+        color: #fff;
+      }
     }
     a{
       color: rgba(#fff,0.7);

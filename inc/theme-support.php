@@ -44,10 +44,10 @@ function sunset_register_header_menu(){
 }
 add_action( 'after_setup_theme','sunset_register_header_menu');
 
-
 /*
   =========================================
    Activate Post Freatures
   =========================================
 */
 add_theme_support('post-thumbnails');
+

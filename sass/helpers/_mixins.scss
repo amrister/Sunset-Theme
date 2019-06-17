@@ -1,0 +1,9 @@
+@mixin animate( $value, $time ){
+  -webkit-transition: #{$value} #{$time} ease-in-out;
+  transition:  #{$value} #{$time} ease-in-out;
+}
+
+@mixin transfor($value){
+  -webkit-transform: $value;
+          transform: $value;
+}
