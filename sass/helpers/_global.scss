@@ -1,3 +1,4 @@
+
 /*
 @package Sunset-theme
   The Main CSS File For The Theme
@@ -19,11 +20,19 @@
 }
 .sunset-icon { font-family: 'sunset-icon' !important; speak: none; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; } .sunset-audio:before { content: "\e800"; } .sunset-chevron-left:before { content: "\e801"; } .sunset-chevron-right:before { content: "\e802"; } .sunset-close:before { content: "\e803"; } .sunset-comment:before { content: "\e804"; } .sunset-link:before { content: "\e805"; } .sunset-loading:before { content: "\e806"; } .sunset-logo:before { content: "\e807"; } .sunset-menu:before { content: "\e808"; } .sunset-pencil:before { content: "\e809"; } .sunset-pics:before { content: "\e80a"; } .sunset-search:before { content: "\e80b"; } .sunset-share:before { content: "\e80c"; } .sunset-tag:before { content: "\e80d"; } .sunset-video:before { content: "\e80e"; }
 
-/*
 /* ----------------------------- Start Global -----------------------------*/
 body{
   font-family: 'Raleway', sans-serif;
 }
+
+a{
+
+  @include animate(color,220ms);    
+  &:focus,&:hover{
+    text-decoration: none;
+  }
+}
+
 /* ----------------------------- End Global -----------------------------*/
 /* ----------------------------- Start Framework -----------------------------*/
 .background-image{
@@ -50,4 +59,71 @@ body{
   font-size: 14px;
   margin-top: 1em;
 }
+
+.image{
+  width: 100%;
+  img{
+    width: 100%;
+  }
+}
+.btn{
+  padding:6px 10px 4px;
+  text-transform: uppercase;
+  background-color: transparent;
+  border-radius: 0; 
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  border-color: transparent;
+  &:hover{
+    background-color: transparent;
+    border-color: transparent;
+  }
+}
+.btn-gray{
+  border-color: $lightGray;
+  color: $lightGray;
+  &:hover{
+    color: #fff;
+    border-color: $darkGray;
+    background-color: $darkGray;
+  } 
+}
+.overlay{
+  position: relative;
+  &:after{
+    content:"";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.10);
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.35);
+    @include animate(background,320ms);
+  }
+}
+.share-icon{
+      position: absolute;
+      background-color: rgba(#000,0.4);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      top: 7px;
+      right: 7px;
+      z-index: 5;
+      text-align: center;
+      line-height: 30px;
+      span{
+        color: #fff;
+        font-size: 14px;
+      }
+    }
+  .no-wrapers{
+      &:after,&:before{
+        display: none !important; 
+      }
+  }
 /* ----------------------------- End Framework -----------------------------*/

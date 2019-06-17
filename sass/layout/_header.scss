@@ -6,7 +6,8 @@
 }
 .header-content {
   color: #fff;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+
+  @extend %textShadow;
 }
 .nav-container{
   position: absolute;
@@ -31,6 +32,13 @@
     border-bottom: 2px solid  transparent;
     margin: 0 33px;
     &.active {
+      a{
+        color: #fff;
+		&:after{
+	   	  background-color: #fff;
+		  @include transfor( translateY(0px));
+	  	} 
+	  }
       border-color: rgba(#fff,0.7);
       a{
         color: #fff;
@@ -39,7 +47,7 @@
     a{
       color: rgba(#fff,0.7);
       text-decoration: none;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+      @extend %textShadow;
       font-size: 12px;
       letter-spacing: 0.05em;
       text-transform: uppercase;

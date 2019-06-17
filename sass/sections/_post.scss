@@ -1,0 +1,265 @@
+/* -------------------------- Start Post ---------------------------------*/
+.post{
+   padding-top: 50px;
+   margin-bottom: 35px;
+   padding: 50px calc( 140px - 30px) 0;
+   .post-title{
+   		font-size: 48px;
+   		font-weight: 300;
+   		margin-top: 0;
+   		margin-bottom: 22px;
+   		a{
+   			color: $primary;
+   		}
+   		&:before , &:after{
+   			content: "~";
+   			position: relative;
+   			display: inline-block;
+   		}
+   		&:before{
+   			margin-right: 10px;
+   		}
+   		&:after{
+   			margin-left: 10px;
+   		}
+   }
+   .post-meta{
+   		font-size: 13px;
+   		margin-right: 0;
+   		color: $lightGray;
+   		margin-bottom: 30px;
+   		span{
+   			font-weight: 300;	
+   		}
+   		a{
+   			color: $lightGray;	
+   			font-weight: 500;
+   			&:focus, &:hover{
+			  color:$darkGray;
+			}
+   		}
+   }
+   .post-image{
+   		width: 100%;
+   		height: 332px;
+   		&:hover{
+			&:after{
+				background-color:transparent;
+   			}
+   		}
+   }
+   .post-text{
+	   	margin: 28px 0 20px;
+	   	padding-left: 10px;
+	   	font-size: 17px;
+	   	line-height: 1.5em;
+	   	letter-spacing: 0.02em; 
+   }
+   .post-footer{
+	   	padding: 10px;
+	   	margin-top: 22px;
+	   	border-bottom: 4px solid rgba($llGray,0.06);
+	   	font-weight: 500;	
+		font-size: 12px;
+		color: $lightGray;
+		text-transform: uppercase;			
+		letter-spacing: 0.5px;
+		a{
+			padding: 0 5px;
+			font-size: 12px;
+			color: $lightGray;
+			&:hover{
+				color:$darkGray;
+			}
+			span{
+				margin-left: 7px;
+			}
+		}
+		span.sunset-icon{
+			color: $lightGray;
+			font-size: 11px;
+		}
+   }
+
+   /* Image Format */
+   &.image-format{
+   	.post-title,.post-meta{
+   		position: relative;
+   		z-index: 5;
+   		color: #fff;
+   		@extend %textShadow;
+   		a{
+   		 	color: #fff;
+   		}
+
+   	}
+   	.post-image{
+   		height: 507px;
+   		padding-top: 16px;
+   		position: relative;
+   	}
+   	.post-text{
+   		position: absolute;
+   		bottom: 0;
+   		left: 0;
+   		right: 0;
+   		color: #fff;
+   		text-align: center;
+   		width: 100%;
+   		padding: 30px 0;
+   		background-color: rgba(#000,0.4);
+   		margin-bottom: 0;
+   		z-index: 5;
+   		font-size: 13px;
+   	}
+   	.post-footer{
+   		margin-top: 5px;
+   	}
+   }
+
+   /* Audio Format */
+   &.audio-format{
+   	.post-body{
+   		position: relative;
+   	}
+   	.post-title,.post-meta{
+   		display: inline-block;
+   	}
+   	.post-title{
+   		margin-right: 16px;
+   	}
+   	.post-footer{
+   		margin-top: 5px;
+   	}
+   	.audio-file >*{
+   		width: 100%;
+   	}	
+   	iframe{
+   		height: 166px;
+   	}
+   }
+
+    /* Video Format */
+  	&.video-format{
+	   	.video-container{
+	   		position: relative;
+	   		margin-bottom: 40px;
+	   	}
+	   	.post-footer{
+	   		margin-top: 40px;
+	   	}	
+	   	.video-file >*{
+	   		width: 100%;
+	   	}
+	   	.share-icon{
+	   		top: auto;
+	   		bottom: -38px;
+	   	}
+	 }
+
+	/* Quote Format */
+  	&.quote-format{
+  		h6{
+  			font-size: 18px;
+  			color: $lightGray;
+  			&:before{
+  				margin-right: 5px;
+  			}
+  			&:after{
+  				margin-left: 5px;
+  			}
+  		}
+  		a {
+  			color: #000;
+  		}
+	   	.post-text{
+	   		p{
+	   			display: inline;
+	   		}
+	   		h2{
+		   		font-size: 42px;
+		   		font-weight: 200;
+		   		line-height: 1.3em;
+		   		letter-spacing: 0.02em;
+		   		&:before , &:after{
+		   			position: relative;
+		   			display: inline-block;
+		   			font-weight: 500;
+		   			color: $darkGray;
+		   		}
+		   		&:before{
+		   			content: '“';
+		   			margin-right: 5px;
+		   		}
+		   		&:after{
+		   			content: '„';
+		   			margin-left: 5px;
+		   		}
+		   		@include animate(all, 0.2s);
+		   		&:hover{
+		   			transform: scale(1.01);
+		   		}
+		   	}
+		}
+	 }
+
+	/* Link Format */
+	&.link-format{
+		.post-header{
+			padding-bottom: 50px;
+			border-bottom: 4px solid rgba($llGray,0.06);
+		}
+		.share-icon-container{
+			width: 55px;
+			height: 55px;
+			text-align: center;
+			border-radius: 50%;
+			line-height: 60px;
+			background-color: #656565 	;
+			color: #fff;
+			font-size: 30px;
+			margin: 10px auto;
+			@include animate(all,220ms);
+			&:hover{
+				box-shadow: 0 0 10px 5px #ddd;
+			}
+		}
+
+	}
+
+	/* Aside Format */
+	&.aside-format{
+		.post-content{
+			background-color: $lWhite;
+		}
+		.post-text{
+			margin-top: 0;
+			padding-left: 0;
+			font-size: 15px;
+			color: $darkGray;
+		}
+		.post-meta{
+			margin-bottom: 10px;
+		}
+		.media{
+			position: relative;
+			.image{
+				width: 138px;
+				height: 138px;
+				border-radius: 50%;
+				overflow: hidden;
+				margin: 25px 5px -10px 25px;
+			}
+			.media-body{
+				padding: 20px 20px 0;
+			}
+		}
+		.post-footer{
+			background-color: #ededed;
+			padding-left: 190px;
+			margin-top: 0;
+			border: 0;
+		}
+	}
+}
+/* -------------------------- End Post ---------------------------------*/
