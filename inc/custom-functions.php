@@ -65,16 +65,15 @@
     	}
     	return $output;
     }
-
 /*
   	=======================================
       Get Audio IFrame with visual false
     =======================================
 */
     function sunset_get_embeded_media( $types = array()){
-		$content = do_shortcode( apply_filters('the_content', get_the_content()));
-		$embed = get_media_embedded_in_content( $content, $array);
-		return str_replace('?visual=true', '?visual=false', $embed[0]);
+			$content = do_shortcode( apply_filters('the_content', get_the_content()));
+			$embed = get_media_embedded_in_content( $content, $array);
+			return str_replace('?visual=true', '?visual=false', $embed[0]);
     }
 /*
   	=======================================
@@ -115,4 +114,31 @@
 			}
 			return $output;
 		}
-?>
+
+/*
+  	=======================================
+     	Get Current Page Url
+    =======================================
+*/
+	function susnet_grab_page_url(){
+		$http = ( isset( $_SERVER["HTTPS"] ) ? 'https://' : 'http://' );
+		$prefix = $http . $_SERVER["HTTP_HOST"];
+		$finalUrl = $prefix . $_SERVER["REQUEST_URI"];
+		return $finalUrl;
+	}
+
+/*
+  	=======================================
+     	Get Element index
+    =======================================
+*/
+	function sunset_get_archType_index($arr){
+		$types = array('category','tag','author');
+		$arrSize = count($arr);
+		for ($i=3; $i < $arrSize ; $i++) {
+			if(in_array($arr[$i],$types)){
+				return $i;
+			}
+		}
+		return -1;
+	}
