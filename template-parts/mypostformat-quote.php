@@ -2,9 +2,10 @@
 /*
 @packge sunset-theme
 	This Template For Quote Post Format
-*/	
+*/
+$showClass = get_query_var( 'post-show');
 ?>
-<article <?php post_class('quote-format');?> id="post-<?php the_ID(); ?>">
+<article <?php post_class(array('quote-format',$showClass));?> id="post-<?php the_ID(); ?>">
 
 	<div class="post-content">
 		<div class="quote-container">

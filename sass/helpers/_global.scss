@@ -27,7 +27,7 @@ body{
 
 a{
 
-  @include animate(color,220ms);    
+  @include animate(color,220ms);
   &:focus,&:hover{
     text-decoration: none;
   }
@@ -70,7 +70,7 @@ a{
   padding:6px 10px 4px;
   text-transform: uppercase;
   background-color: transparent;
-  border-radius: 0; 
+  border-radius: 0;
   font-size: 14px;
   font-weight: 300;
   letter-spacing: 0.5px;
@@ -87,7 +87,7 @@ a{
     color: #fff;
     border-color: $darkGray;
     background-color: $darkGray;
-  } 
+  }
 }
 .overlay{
   position: relative;
@@ -123,7 +123,52 @@ a{
     }
   .no-wrapers{
       &:after,&:before{
-        display: none !important; 
+        display: none !important;
       }
+  }
+  .photo-caption{
+   		position: absolute;
+   		bottom: 0;
+   		left: 0;
+   		right: 0;
+   		color: #fff;
+   		text-align: center;
+   		width: 100%;
+   		padding: 30px 0;
+   		background-color: rgba(#000,0.4);
+   		margin-bottom: 0;
+   		z-index: 5;
+   		font-size: 13px;
+      // height: 95px;
+  }
+  .sunset-load-more{
+    // width: 120px;
+    margin: 50px auto 0;
+    @include animate(all,220ms);
+    opacity: 0.5;
+    font-size: 22px;
+    display: inline-block;
+    color: #222;
+    cursor: pointer;
+    .text{
+      display: block;
+    }
+    &:hover,
+    &:focus,
+    &.loading{
+      opacity: 1;
+    }
+    &.loading{
+      cursor: default;
+    }
+    span{
+      display: block;
+    }
+  }
+  .spin{
+    animation-name: spin;
+    animation-duration: 600ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
   }
 /* ----------------------------- End Framework -----------------------------*/

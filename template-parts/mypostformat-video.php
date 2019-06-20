@@ -2,14 +2,15 @@
 /*
 @packge sunset-theme
 	This Template For Video Post Format
-*/	
+*/
+$showClass = get_query_var( 'post-show');
 ?>
-<article <?php post_class('video-format');?> id="post-<?php the_ID(); ?>">
+<article <?php post_class(array('video-format',$showClass));?> id="post-<?php the_ID(); ?>">
 	<div class="post-content">
 		<div class="video-container">
 			<div class="video-file embed-responsive embed-responsive-21by9">
-				<?php 
-					echo sunset_get_embeded_media(array('video','iframe')); 
+				<?php
+					echo sunset_get_embeded_media(array('video','iframe'));
 				?>
 			</div>
 			<div class="share-icon"><span class="sunset-icon sunset-share"></span></div>
@@ -21,7 +22,7 @@
 					<?php echo sunset_posted_meta(); ?>
 				</div>
 			</div>
-			<div class="post-text"> 
+			<div class="post-text">
 				<?php the_excerpt(); ?>
 			</div>
 			<div class="button-container text-center">

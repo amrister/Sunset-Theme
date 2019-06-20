@@ -7,3 +7,12 @@
   -webkit-transform: $value;
           transform: $value;
 }
+
+@keyframes spin {
+  from{
+    transform: rotate(360deg);
+  }
+  to{
+    transform: rotate(0deg);
+  }
+}
