@@ -47,7 +47,6 @@ function sunset_enqueue_files(){
 
   // Fonts
   wp_enqueue_style('raleway', 'https://fonts.googleapis.com/css?family=Raleway:200,300,500&display=swap');
-  
+
 }
 add_action('wp_enqueue_scripts','sunset_enqueue_files');
-=======

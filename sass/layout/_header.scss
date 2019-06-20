@@ -34,12 +34,11 @@
     &.active {
       a{
         color: #fff;
-		&:after{
-	   	  background-color: #fff;
-		  @include transfor( translateY(0px));
-	  	} 
-	  }
-      border-color: rgba(#fff,0.7);
+    		&:after{
+    	   	background-color: #fff;
+    		  @include transfor( translateY(0px));
+    	  }
+	    }
       a{
         color: #fff;
       }

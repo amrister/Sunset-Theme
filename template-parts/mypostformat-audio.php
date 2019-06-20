@@ -2,9 +2,10 @@
 /*
 @packge sunset-theme
 	This Template For Audio Post Format
-*/	
+*/
+$showClass = get_query_var( 'post-show');
 ?>
-<article <?php post_class('audio-format');?> id="post-<?php the_ID(); ?>">
+<article <?php post_class(array('audio-format',$showClass));?> id="post-<?php the_ID(); ?>">
 	<div class="post-content">
 		<div class="post-body">
 			<div class="post-header">
@@ -14,8 +15,8 @@
 				</div>
 			</div>
 			<div class="audio-file">
-				<?php 
-					echo sunset_get_embeded_media(array('audio','iframe')); 
+				<?php
+					echo sunset_get_embeded_media(array('audio','iframe'));
 				?>
 			</div>
 			<div class="share-icon"><span class="sunset-icon sunset-share"></span></div>

@@ -2,6 +2,85 @@
 @package Sunset-theme
   The Main CSS File For The Theme
 */
+/* 
+	Font Icon
+	------------------------------------------------
+*/
+@font-face {
+  font-family: 'sunset-icon';
+  src: url("../fonts/font-icons/sunset-icon.eot?dxcjr7");
+  src: url("../fonts/font-icons/sunset-icon.eot?dxcjr7#iefix") format("embedded-opentype"), url("../fonts/font-icons/sunset-icon.ttf?dxcjr7") format("truetype"), url("../fonts/font-icons/sunset-icon.woff?dxcjr7") format("woff"), url("../fonts/font-icons/sunset-icon.svg?dxcjr7#sunset-icon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+.sunset-icon {
+  font-family: 'sunset-icon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.sunset-audio:before {
+  content: "\e800"; }
+
+.sunset-chevron-left:before {
+  content: "\e801"; }
+
+.sunset-chevron-right:before {
+  content: "\e802"; }
+
+.sunset-close:before {
+  content: "\e803"; }
+
+.sunset-comment:before {
+  content: "\e804"; }
+
+.sunset-link:before {
+  content: "\e805"; }
+
+.sunset-loading:before {
+  content: "\e806"; }
+
+.sunset-logo:before {
+  content: "\e807"; }
+
+.sunset-menu:before {
+  content: "\e808"; }
+
+.sunset-pencil:before {
+  content: "\e809"; }
+
+.sunset-pics:before {
+  content: "\e80a"; }
+
+.sunset-search:before {
+  content: "\e80b"; }
+
+.sunset-share:before {
+  content: "\e80c"; }
+
+.sunset-tag:before {
+  content: "\e80d"; }
+
+.sunset-video:before {
+  content: "\e80e"; }
+
+/* ---------------------------------------------------------------------- */
+.header-content, .nav-container li a, .post.image-format .post-title, .post.image-format .post-meta {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); }
+
+@keyframes spin {
+  from {
+    transform: rotate(360deg); }
+  to {
+    transform: rotate(0deg); } }
+/*
+@package Sunset-theme
+  The Main CSS File For The Theme
+*/
 /*
 	Font Icon
 	------------------------------------------------
@@ -68,7 +147,6 @@
 .sunset-video:before {
   content: "\e80e"; }
 
-
 /* ----------------------------- Start Global -----------------------------*/
 body {
   font-family: 'Raleway', sans-serif; }
@@ -78,6 +156,7 @@ a {
   transition: color 220ms ease-in-out; }
   a:focus, a:hover {
     text-decoration: none; }
+
 /* ----------------------------- End Global -----------------------------*/
 /* ----------------------------- Start Framework -----------------------------*/
 .background-image {
@@ -103,7 +182,6 @@ a {
 .site-description {
   font-size: 14px;
   margin-top: 1em; }
-
 
 .image {
   width: 100%; }
@@ -165,6 +243,44 @@ a {
 .no-wrapers:after, .no-wrapers:before {
   display: none !important; }
 
+.photo-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  padding: 30px 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  margin-bottom: 0;
+  z-index: 5;
+  font-size: 13px; }
+
+.sunset-load-more {
+  margin: 50px auto 0;
+  -webkit-transition: all 220ms ease-in-out;
+  transition: all 220ms ease-in-out;
+  opacity: 0.5;
+  font-size: 22px;
+  display: inline-block;
+  color: #222;
+  cursor: pointer; }
+  .sunset-load-more .text {
+    display: block; }
+  .sunset-load-more:hover, .sunset-load-more:focus, .sunset-load-more.loading {
+    opacity: 1; }
+  .sunset-load-more.loading {
+    cursor: default; }
+  .sunset-load-more span {
+    display: block; }
+
+.spin {
+  animation-name: spin;
+  animation-duration: 600ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; }
+
 /* ----------------------------- End Framework -----------------------------*/
 /* ----------------------------- Start Header -----------------------------*/
 .header-container {
@@ -173,7 +289,6 @@ a {
   position: relative; }
 
 .header-content {
-
   color: #fff; }
 
 .nav-container {
@@ -202,6 +317,8 @@ a {
         background-color: #fff;
         -webkit-transform: translateY(0px);
         transform: translateY(0px); }
+    .nav-container li.active a {
+      color: #fff; }
     .nav-container li a {
       color: rgba(255, 255, 255, 0.7);
       text-decoration: none;
@@ -244,6 +361,17 @@ footer {
 
 /* ----------------------------- End Footer --------------------------------*/
 /* -------------------------- Start Post ---------------------------------*/
+.posts-container article {
+  -webkit-transition: all 220ms ease-in-out;
+  transition: all 220ms ease-in-out;
+  -webkit-transform: translateY(100px);
+  transform: translateY(100px);
+  opacity: 0; }
+  .posts-container article.reveal {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0); }
+
 .post {
   padding-top: 50px;
   margin-bottom: 35px;
@@ -251,6 +379,7 @@ footer {
   /* Image Format */
   /* Audio Format */
   /* Video Format */
+  /* Gallery Format */
   /* Quote Format */
   /* Link Format */
   /* Aside Format */ }
@@ -318,23 +447,12 @@ footer {
     color: #fff; }
     .post.image-format .post-title a, .post.image-format .post-meta a {
       color: #fff; }
+  .post.image-format .post-text {
+    margin-bottom: 0; }
   .post.image-format .post-image {
     height: 507px;
     padding-top: 16px;
     position: relative; }
-  .post.image-format .post-text {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    color: #fff;
-    text-align: center;
-    width: 100%;
-    padding: 30px 0;
-    background-color: rgba(0, 0, 0, 0.4);
-    margin-bottom: 0;
-    z-index: 5;
-    font-size: 13px; }
   .post.image-format .post-footer {
     margin-top: 5px; }
   .post.audio-format .post-body {
@@ -359,6 +477,56 @@ footer {
   .post.video-format .share-icon {
     top: auto;
     bottom: -38px; }
+  .post.gallery-format .post-title {
+    margin-top: 50px; }
+  .post.gallery-format .post-image {
+    position: relative; }
+  .post.gallery-format .post-footer {
+    margin-top: 20px; }
+  .post.gallery-format .preview-container {
+    position: relative;
+    display: block;
+    width: 100%;
+    line-height: 0;
+    -webkit-transition: background 220ms ease-in-out;
+    transition: background 220ms ease-in-out; }
+    .post.gallery-format .preview-container.left {
+      padding: 20px 60px 20px 25px;
+      text-align: left;
+      border-radius: 0 35px 35px 0; }
+      .post.gallery-format .preview-container.left .preview-image {
+        right: 2px; }
+    .post.gallery-format .preview-container.right {
+      padding: 20px 25px 20px 60px;
+      text-align: right;
+      border-radius: 35px 0 0 35px; }
+      .post.gallery-format .preview-container.right .preview-image {
+        left: 2px; }
+    .post.gallery-format .preview-container .preview-image {
+      position: absolute;
+      top: 2px;
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      background-color: #ccc;
+      transform: scale(0);
+      -webkit-transition: transform 220ms ease-in-out;
+      transition: transform 220ms ease-in-out; }
+    .post.gallery-format .preview-container:hover {
+      background-color: rgba(0, 0, 0, 0.8); }
+      .post.gallery-format .preview-container:hover .preview-image {
+        transform: scale(1); }
+  .post.gallery-format .sunset-icon {
+    font-size: 30px; }
+  .post.gallery-format .carousel-control-prev, .post.gallery-format .carousel-control-next {
+    overflow: hidden;
+    opacity: 1; }
+  .post.gallery-format .photo-caption {
+    transform: translateY(100%);
+    -webkit-transition: transform 220ms ease-in-out;
+    transition: transform 220ms ease-in-out; }
+  .post.gallery-format:hover .photo-caption {
+    transform: translateY(0); }
   .post.quote-format h6 {
     font-size: 18px;
     color: #898989; }
@@ -375,21 +543,21 @@ footer {
     font-weight: 200;
     line-height: 1.3em;
     letter-spacing: 0.02em;
-    -webkit-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out; }
+    -webkit-transition: font 0.2s ease-in-out;
+    transition: font 0.2s ease-in-out; }
     .post.quote-format .post-text h2:before, .post.quote-format .post-text h2:after {
       position: relative;
       display: inline-block;
       font-weight: 500;
       color: #333333; }
     .post.quote-format .post-text h2:before {
-      content: '“';
+      content: '"';
       margin-right: 5px; }
     .post.quote-format .post-text h2:after {
-      content: '„';
+      content: '"';
       margin-left: 5px; }
     .post.quote-format .post-text h2:hover {
-      transform: scale(1.01); }
+      font-size: 42.2px; }
   .post.link-format .post-header {
     padding-bottom: 50px;
     border-bottom: 4px solid rgba(98, 98, 98, 0.06); }

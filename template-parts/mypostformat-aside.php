@@ -2,9 +2,10 @@
 /*
 @packge sunset-theme
 	This Template For Aside Post Format
-*/	
+*/
+$showClass = get_query_var( 'post-show');
 ?>
-<article <?php post_class('aside-format');?> id="post-<?php the_ID(); ?>">
+<article <?php post_class(array('aside-format',$showClass));?> id="post-<?php the_ID(); ?>">
 	<div class="post-content">
 		<div class="media">
 			<div class="image">

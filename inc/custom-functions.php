@@ -14,7 +14,7 @@
 		if(!empty($cats)){
 			foreach($cats as $cat){
 				$i++;
-				if($i>1){ $postedIn.=$sep; } 
+				if($i>1){ $postedIn.=$sep; }
 				$postedIn .= '<a href="'.esc_url( get_category_link( $cat->term_id ) ).'" alt="'.esc_attr('View All Posts in%s', $cat->name ).'" >'.esc_html($cat->name).'</a>';
 
 			}
@@ -36,7 +36,7 @@
 			$comments = '<a href="'.get_comments_link().'">'.$comments.' <span class="sunset-icon sunset-comment"></span></a>';
 		}else{
 			$comments = __('Comments closed');
-		}	
+		}
 
 		return '<div class="post-footer-container"><div class="row"><div class="col-xs-12 col-sm-6">'. get_the_tag_list('<div class="tags-list"><span class="sunset-icon sunset-tag"></span>', ' ', '</div>') .'</div><div class="col-xs-12 col-sm-6 text-right">'. $comments .'</div></div></div>';
 	}
@@ -45,24 +45,24 @@
       Get Attachments of Post
     ===============================
 */
-    function sunset_get_attachment(){
-    	$output='';
-    	if(has_post_thumbnail()){
+    function sunset_get_attachment($num = 1){
+			$output='';
+    	if(has_post_thumbnail() && $num == 1){
     		$output = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) );
     	}else{
     		$attachments = get_posts(array(
     				'post_type' => 'attachment',
-    				'posts_per_page' => 1,
+    				'posts_per_page' => $num,
     				'post_parent' => get_the_ID(),
     			)
     		);
-    		if($attachments){
-    			foreach ($attachments as $element) {
-    				$output = wp_get_attachment_url( $element->ID);
-    			}
-    		}
+    		if($attachments && $num == 1){
+					$output = wp_get_attachment_url( $attachments[0]->ID);
+    		}elseif($attachments && $num > 1){
+					$output = $attachments;
+				}
     		wp_reset_postdata();
-    	}	
+    	}
     	return $output;
     }
 
@@ -89,4 +89,30 @@
     	return esc_url_raw($output[1]);
     }
 
+/*
+  	=======================================
+     	Clean Gallery Format Code
+    =======================================
+*/
+		function sunset_get_bs_slides($postImages){
+			$output = array();
+			$count = count($postImages);
+			for ($i=0; $i < $count ; $i++){
+				$active  = (!$i) ? ' active' : '';
+				$imageUrl = wp_get_attachment_url( $postImages[$i]->ID );
+				$n = ( $i == $count-1 ) ? 0 : $i+1;
+				$nextImage = wp_get_attachment_url( $postImages[$n]->ID );
+				$p = ( $i == 0 ) ? $count-1 : $i-1;
+				$prevImage = wp_get_attachment_url( $postImages[$p]->ID );
+				$caption = $postImages[$i]->post_excerpt;
+				$output[$i] = array(
+					'class' 	=> $active,
+					'url' 		=> $imageUrl,
+					'next' 		=> $nextImage,
+					'prev' 		=> $prevImage,
+					'caption' => $caption,
+				);
+			}
+			return $output;
+		}
 ?>
