@@ -27,7 +27,6 @@ function sunset_admin_enqueues($page){
 add_action('admin_enqueue_scripts','sunset_admin_enqueues'); // Will make it included only on dashboard ( not in Front-End)
 
 
-
 /*
   ===============================
     Website Enqueue Function
@@ -40,10 +39,10 @@ function sunset_enqueue_files(){
   wp_enqueue_style( 'sunset-master', get_template_directory_uri().'/css/master.css', array(), '1.0.0', 'all' );
 
   // JS Files
-  wp_enqueue_script( 'jQuery', get_template_directory_uri().'/js/jquery-3.2.1.min.js', flase, '3.2.1' , true);
-  wp_enqueue_script( 'bootstrap-js', get_template_directory_uri().'/js/bootstrap.min.js', array('jQuery'), '4.1.0' , true);
-  wp_enqueue_script( 'popper', get_template_directory_uri().'/js/popper.min.js', array('bootstrap-js'), '1.0.0' , true);
-  wp_enqueue_script( 'sunset-main', get_template_directory_uri().'/js/main.js', array(), '1.0.0' , true);
+  wp_enqueue_script( 'jQuery',       get_template_directory_uri().'/js/jquery-3.2.1.min.js', flase, '3.2.1' , true);
+  wp_enqueue_script( 'bootstrap-js', get_template_directory_uri().'/js/bootstrap.min.js', array('popper'), '4.1.0' , true);
+  wp_enqueue_script( 'popper',       get_template_directory_uri().'/js/popper.min.js', array(), '1.0.0' , true);
+  wp_enqueue_script( 'sunset-main',  get_template_directory_uri().'/js/main.js', array(), '1.0.0' , true);
 
   // Fonts
   wp_enqueue_style('raleway', 'https://fonts.googleapis.com/css?family=Raleway:200,300,500&display=swap');
