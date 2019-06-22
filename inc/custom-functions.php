@@ -45,7 +45,7 @@
       Get Attachments of Post
     ===============================
 */
-    function sunset_get_attachment($num = 1){
+  function sunset_get_attachment($num = 1){
 			$output='';
     	if(has_post_thumbnail() && $num == 1){
     		$output = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) );
@@ -70,7 +70,7 @@
       Get Audio IFrame with visual false
     =======================================
 */
-    function sunset_get_embeded_media( $types = array()){
+  function sunset_get_embeded_media( $types = array()){
 			$content = do_shortcode( apply_filters('the_content', get_the_content()));
 			$embed = get_media_embedded_in_content( $content, $array);
 			return str_replace('?visual=true', '?visual=false', $embed[0]);
@@ -81,7 +81,7 @@
     =======================================
 */
 
-    function sunset_grab_link(){
+  function sunset_grab_link(){
     	if( !preg_match( '/<a\s[^>]*?href=[\'"](.+?)[\'"]/i' , get_the_content() ,$output) ){ // to get href value inside the link
     		return false;
     	}
@@ -93,7 +93,7 @@
      	Clean Gallery Format Code
     =======================================
 */
-		function sunset_get_bs_slides($postImages){
+	function sunset_get_bs_slides($postImages){
 			$output = array();
 			$count = count($postImages);
 			for ($i=0; $i < $count ; $i++){
@@ -142,3 +142,66 @@
 		}
 		return -1;
 	}
+	/*
+	  	=======================================
+	     	Get Post Navigations to single.php
+	    =======================================
+	*/
+	function sunset_post_navigation(){
+
+		$prev = get_previous_post_link( '<div class="post-nav-link"><span class="sunset-icon sunset-chevron-left"></span>%link</div>', '%title' );
+		$next = get_next_post_link( '<div class="post-nav-link text-right">%link<span class="sunset-icon sunset-chevron-right"></span></div>', '%title' );
+
+		$nav ='<div class="row">';
+		$nav .='<div class="col-6">'.$prev.'</div>';
+		$nav .='<div class="col-6">'.$next.'</div>';
+		$nav .= '</div>';
+
+		return $nav;
+	}
+/*
+  	=================================================
+     	Include Sharing options with post content
+    =================================================
+*/
+	function sunset_sharing_options($content){
+
+		if(is_single()){
+
+			$title = get_the_title();
+			$permalink = get_permalink();
+			$twitterHandler = ( get_option('twitter_handler') ? '&amp;via='.esc_attr(get_option('twitter_handler')) :	'' );
+			// $permalink= 'https://www.google.com';
+			$twitter = 'https://twitter.com/intent/tweet?text=Hey!'.$title.'&amp;url='.$permalink.$twitterHandler.'';
+			$facebook = 'https://www.facebook.com/sharer/sharer.php?u='.$permalink;
+			$googlePlus = 'https://wwww.plus.google.com/share?url='.$permalink.'';
+
+			$output = '<div class="post-sharing">';
+			$output .= '<ul>';
+			$output .= '<li><a target="_blank" rel="nofollow" href="'.$facebook.'">face</a></li>';
+			$output .= '<li><a target="_blank" rel="nofollow" href="'.$twitter.'">twitter</a></li>';
+			$output .= '<li><a target="_blank" rel="nofollow" href="'.$googlePlus.'">gPlus</a></li>';
+			$output .= '</ul>';
+			$output .= '</div>';
+
+			return $content.$output;
+
+		}else{
+			return $content;
+		}
+
+	}
+	add_filter( 'the_content', 'sunset_sharing_options'); // Mean TO Do fn in a certain situation
+																												// Situation Here is  when the_content() function is caled
+
+
+/*
+  	=================================================
+     	Get custom navigations for comments pages
+    =================================================
+*/
+function sunset_get_comments_nav(){
+	// if( get_comment_pages_count() > 1 /*&& get_option('page_comments')*/ ) {
+			require( get_template_directory().'/template-parts/sunset-comment-nav.php' );
+	// }
+}
