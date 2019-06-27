@@ -22,22 +22,25 @@
 		$output = '<h6><span class="posted-on">Posted <a href="'.esc_url( get_permalink() ).'">'.$postedOn.'</a> ago / </span><span class="posted-in">'.$postedIn.'</span></h6>';
 		return $output;
 	}
-	function sunset_posted_footer(){
+	function sunset_get_comments_statement(){
 		$comments_num = get_comments_number();
 		$comments = '';
+		if($comments_num==0){
+			$comments = __('No Comments');
+		}elseif($comments_num > 1 ){
+			$comments = $comments_num . __(' Comments');
+		}elseif($comments_num ==1 ){
+			$comments = __('1 Comment');
+		}
+		return $comments;
+	}
+	function sunset_posted_footer(){
 		if(comments_open()){
-			if($comments_num==0){
-				$comments = __('No Comments');
-			}elseif($comments_num > 1 ){
-				$comments = $comments_num . __(' Comments');
-			}elseif($comments_num ==1 ){
-				$comments = __('1 Comment');
-			}
+			$comments = sunset_get_comments_statement();
 			$comments = '<a href="'.get_comments_link().'">'.$comments.' <span class="sunset-icon sunset-comment"></span></a>';
 		}else{
 			$comments = __('Comments closed');
 		}
-
 		return '<div class="post-footer-container"><div class="row"><div class="col-xs-12 col-sm-6">'. get_the_tag_list('<div class="tags-list"><span class="sunset-icon sunset-tag"></span>', ' ', '</div>') .'</div><div class="col-xs-12 col-sm-6 text-right">'. $comments .'</div></div></div>';
 	}
 /*

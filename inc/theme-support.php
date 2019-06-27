@@ -34,6 +34,26 @@
   }
   add_action( 'init', 'sunset_theme_support_options');
 
+
+/*
+  =========================================
+   Include Post Formats
+  =========================================
+*/
+  function sunset_sidebar(){
+    register_sidebar(
+        array(
+            'name' => esc_html__('Sunset Sidebar','Sunset-theme'),
+            'id' => 'sunset-sidebar',
+            'description' => 'Dynamic Right Sidebar',
+            'before_widget' => '<section id="%1$s" class="sunset-widget %2$s">',
+            'after_widget' => '</section>',
+            'before_title' => '<h2 class="widget-title">',
+            'after_title' => '</h2>',
+        )
+    );
+  }
+  add_action('widgets_init','sunset_sidebar');
 /*
   =========================================
    Activate Menus

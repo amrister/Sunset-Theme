@@ -18,11 +18,15 @@
     font-weight: normal;
     font-style: normal;
 }
-.sunset-icon { font-family: 'sunset-icon' !important; speak: none; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; } .sunset-audio:before { content: "\e800"; } .sunset-chevron-left:before { content: "\e801"; } .sunset-chevron-right:before { content: "\e802"; } .sunset-close:before { content: "\e803"; } .sunset-comment:before { content: "\e804"; } .sunset-link:before { content: "\e805"; } .sunset-loading:before { content: "\e806"; } .sunset-logo:before { content: "\e807"; } .sunset-menu:before { content: "\e808"; } .sunset-pencil:before { content: "\e809"; } .sunset-pics:before { content: "\e80a"; } .sunset-search:before { content: "\e80b"; } .sunset-share:before { content: "\e80c"; } .sunset-tag:before { content: "\e80d"; } .sunset-video:before { content: "\e80e"; }
+.sunset-icon { @include animate (all,220ms);font-family: 'sunset-icon' !important; speak: none; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; } .sunset-audio:before { content: "\e800"; } .sunset-chevron-left:before { content: "\e801"; } .sunset-chevron-right:before { content: "\e802"; } .sunset-close:before { content: "\e803"; } .sunset-comment:before { content: "\e804"; } .sunset-link:before { content: "\e805"; } .sunset-loading:before { content: "\e806"; } .sunset-logo:before { content: "\e807"; } .sunset-menu:before { content: "\e808"; } .sunset-pencil:before { content: "\e809"; } .sunset-pics:before { content: "\e80a"; } .sunset-search:before { content: "\e80b"; } .sunset-share:before { content: "\e80c"; } .sunset-tag:before { content: "\e80d"; } .sunset-video:before { content: "\e80e"; }
 
 /* ----------------------------- Start Global -----------------------------*/
 body{
   font-family: 'Raleway', sans-serif;
+  position: relative;
+  &.no-scroll{
+    overflow: hidden;
+  }
 }
 
 a{
@@ -188,5 +192,26 @@ a{
       font-size: 48px;
       font-weight: 200;
     }
+  }
+  .sidebar-icon{
+    font-size: 12px;
+    span{
+      cursor: pointer;
+      color: #fff;
+      &:hover{
+        color: $orangeColor;
+      }
+    }
+  }
+  .sidebar-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(#000,0.4);
+    z-index: 3;
+    display: none;
+    cursor: e-resize;
   }
 /* ----------------------------- End Framework -----------------------------*/

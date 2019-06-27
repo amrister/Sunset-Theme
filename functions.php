@@ -15,3 +15,4 @@
    require get_template_directory().'/inc/custom-functions.php';
    require get_template_directory().'/inc/ajax.php';
    require get_template_directory().'/inc/shortcodes.php';
+   require get_template_directory().'/inc/widgets.php';
