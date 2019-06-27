@@ -71,3 +71,9 @@ add_action( 'after_setup_theme','sunset_register_header_menu');
 */
 add_theme_support('post-thumbnails');
 
+/*
+  =========================================
+   Activate HTML5 for some sections
+  =========================================
+*/
+add_theme_support( 'html5', array('comment-list', 'comment-form', 'search-form', 'gallery', 'caption') );

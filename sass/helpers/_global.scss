@@ -39,6 +39,15 @@ a{
 
 /* ----------------------------- End Global -----------------------------*/
 /* ----------------------------- Start Framework -----------------------------*/
+.sunset-tooltip,.sunset-popover{
+  color: rgb(205, 27, 88);
+  font-weight: 500;
+  font-size: 18px;
+  cursor: pointer;
+}
+.no-padding{
+  padding: 0 !important;
+}
 .background-image{
   background-position: center center;
   background-repeat: no-repeat;
@@ -79,10 +88,6 @@ a{
   font-weight: 300;
   letter-spacing: 0.5px;
   border-color: transparent;
-  &:hover{
-    background-color: transparent;
-    border-color: transparent;
-  }
 }
 .btn-gray{
   border-color: $lightGray;
@@ -92,6 +97,12 @@ a{
     border-color: $darkGray;
     background-color: $darkGray;
   }
+}
+.btn-dark{
+  padding:12px 20px 8px;
+  border-color: $darkGray;
+  background-color: $darkGray;
+  color: #fff;
 }
 .overlay{
   position: relative;

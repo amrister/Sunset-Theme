@@ -1,5 +1,7 @@
 $(function(){
 
+  revealPosts();
+
   // Adjust Carousel Of Gallery
   $(document).on('click','.carousel.gallery',function(){
     var carID = $("#" + $(this).attr("id") );
@@ -75,13 +77,18 @@ $(function(){
 
   // Function To add Reveal Class To Posts
   function revealPosts(){
-      var posts = $('article:not(.reveal)'),
-          i = 0;
-      setInterval(function(){
+
+    // Activate Tooltip for bootstrap
+    $('[data-toggle="tooltip"]').tooltip(); // We added it her to be called if new content is loaded by ajax
+    $('[data-toggle="popover"]').popover();
+
+    var posts = $('article:not(.reveal)'),
+        i = 0;
+    setInterval(function(){
         $(posts[i]).addClass('reveal').find('.carousel.gallery').carousel();
         i++;
       },200)
-    }
+  }
 
   // Adjust Paging Url in Home Page
   $(window).on('scroll',function(){
@@ -96,9 +103,6 @@ $(function(){
           }
       });
   })
-
-<<<<<<< Updated upstream
-=======
   // Adjust Siebar
   $(document).on('click','.js-toggleSidebar',function(){
     $('.sunset-sidebar').toggleClass('closed-sidebar');
@@ -106,5 +110,4 @@ $(function(){
     $('.sidebar-overlay').fadeToggle(320);
   });
 
->>>>>>> Stashed changes
 })

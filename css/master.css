@@ -184,6 +184,15 @@ a {
 
 /* ----------------------------- End Global -----------------------------*/
 /* ----------------------------- Start Framework -----------------------------*/
+.sunset-tooltip, .sunset-popover {
+  color: #cd1b58;
+  font-weight: 500;
+  font-size: 18px;
+  cursor: pointer; }
+
+.no-padding {
+  padding: 0 !important; }
+
 .background-image {
   background-position: center center;
   background-repeat: no-repeat;
@@ -222,9 +231,6 @@ a {
   font-weight: 300;
   letter-spacing: 0.5px;
   border-color: transparent; }
-  .btn:hover {
-    background-color: transparent;
-    border-color: transparent; }
 
 .btn-gray {
   border-color: #898989;
@@ -233,6 +239,12 @@ a {
     color: #fff;
     border-color: #333333;
     background-color: #333333; }
+
+.btn-dark {
+  padding: 12px 20px 8px;
+  border-color: #333333;
+  background-color: #333333;
+  color: #fff; }
 
 .overlay {
   position: relative; }
@@ -326,7 +338,6 @@ a {
   left: 0;
   bottom: 0;
   right: 0;
-<<<<<<< Updated upstream
   width: 100%;
   text-align: center; }
   .nav-container .bg-light {
@@ -738,7 +749,102 @@ header .row > * {
         color: #aaa; }
 
 /* ----------------------------------- End Widgets -------------------------*/
->>>>>>> Stashed changes
+/* -------------------------- Start WordPress ---------------------------------*/
+.alignnone {
+  margin: 5px 20px 20px 0; }
+
+.aligncenter,
+div.aligncenter {
+  display: block;
+  margin: 5px auto 5px auto; }
+
+.alignright {
+  float: right;
+  margin: 5px 0 20px 20px; }
+
+.alignleft {
+  float: left;
+  margin: 5px 20px 20px 0; }
+
+a img.alignright {
+  float: right;
+  margin: 5px 0 20px 20px; }
+
+a img.alignnone {
+  margin: 5px 20px 20px 0; }
+
+a img.alignleft {
+  float: left;
+  margin: 5px 20px 20px 0; }
+
+a img.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+.wp-caption {
+  background: #fff;
+  border: 1px solid #f0f0f0;
+  max-width: 96%;
+  /* Image does not overflow the content area */
+  padding: 5px 3px 10px;
+  text-align: center; }
+
+.wp-caption.alignnone {
+  margin: 5px 20px 20px 0; }
+
+.wp-caption.alignleft {
+  margin: 5px 20px 20px 0; }
+
+.wp-caption.alignright {
+  margin: 5px 0 20px 20px; }
+
+.wp-caption img {
+  border: 0 none;
+  height: auto;
+  margin: 0;
+  max-width: 98.5%;
+  padding: 0;
+  width: auto; }
+
+.wp-caption p.wp-caption-text {
+  font-size: 11px;
+  line-height: 17px;
+  margin: 0;
+  padding: 0 4px 5px; }
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+  /* Many screen reader and browser combinations announce broken words as they would appear visually. */ }
+
+.screen-reader-text:focus {
+  background-color: #eee;
+  clip: auto !important;
+  clip-path: none;
+  color: #444;
+  display: block;
+  font-size: 1em;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+  /* Above WP toolbar. */ }
+
+/* -------------------------- End WordPress ---------------------------------*
 /* -------------------------- Start Post ---------------------------------*/
 .posts-container article {
   -webkit-transition: all 220ms ease-in-out;
@@ -820,6 +926,9 @@ header .row > * {
     .post .post-footer span.sunset-icon {
       color: #898989;
       font-size: 11px; }
+  .post.single {
+    margin-top: 50px;
+    padding: 0; }
   .post.image-format .post-title, .post.image-format .post-meta {
     position: relative;
     z-index: 5;
@@ -979,6 +1088,63 @@ header .row > * {
     padding-left: 190px;
     margin-top: 0;
     border: 0; }
+
+.post-nav-link {
+  padding: 20px 0 50px; }
+  .post-nav-link a {
+    padding: 0 10px;
+    display: inline-block;
+    position: relative;
+    top: -2px;
+    color: #333;
+    -webkit-transition: padding 220ms ease-in-out;
+    transition: padding 220ms ease-in-out; }
+    .post-nav-link a:hover {
+      padding-left: 13px;
+      padding-right: 13px; }
+
+.comments-area .comment {
+  margin-bottom: 50px; }
+  .comments-area .comment .comment-metadata {
+    font-size: 12px;
+    margin-bottom: 20px;
+    margin-left: 55px; }
+    .comments-area .comment .comment-metadata a {
+      color: #999; }
+    .comments-area .comment .comment-metadata .edit-link a {
+      font-weight: 500;
+      color: #333;
+      text-transform: uppercase;
+      margin-left: 8px; }
+  .comments-area .comment .avatar {
+    border-radius: 50%;
+    margin-right: 10px; }
+  .comments-area .comment .comment-author .fn {
+    text-transform: capitalize; }
+  .comments-area .comment .comment-content {
+    padding-left: 30px; }
+.comments-area .comment-form input.form-control {
+  width: 40%;
+  display: inline-block; }
+.comments-area .comment-form .comment-form-comment {
+  position: relative; }
+  .comments-area .comment-form .comment-form-comment textarea.form-control {
+    width: 60%;
+    display: inline-block;
+    resize: none; }
+  .comments-area .comment-form .comment-form-comment span {
+    position: absolute;
+    top: 15px; }
+.comments-area label {
+  margin-left: 8px; }
+.comments-area span.required {
+  color: #f00;
+  font-size: 35px;
+  line-height: 9px;
+  display: inline-block;
+  margin-left: 10px;
+  position: relative;
+  top: 15px; }
 
 /* -------------------------- End Post ---------------------------------*/
 
