@@ -3,6 +3,12 @@
   display: block;
   height: 326px;
   position: relative;
+  .sidebar-icon {
+    position: absolute;
+    top: 15px;
+    right: 18px;
+    font-size: 10px;
+  }
 }
 .header-content {
   color: #fff;

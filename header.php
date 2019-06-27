@@ -19,14 +19,28 @@
 
   </head>
   <body class="<?php body_class();?>">
+    <div class="sunset-sidebar closed-sidebar">
+      <div class="sunset-sidebar-container">
+        <a class="js-toggleSidebar sidebar-icon ">
+          <span class="sunset-icon sunset-close"></span>
+        </a>
+        <a class="js-toggleSidebar sidebar-icon search-icon">
+          <span class="sunset-icon sunset-search"></span>
+        </a>
+        <div class="sunset-sidebar-scroll">
+          <?php get_sidebar(); ?>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-overlay js-toggleSidebar"></div>
     <header>
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
             <div class="header-container background-image" style="background-image:url(<?php header_image();?>)">
-              <!-- <div class="upper-menu text-right">
-                <i>icon</i>
-              </div> -->
+              <a class="js-toggleSidebar sidebar-icon">
+                <span class="sunset-icon sunset-menu"></span>
+              </a>
               <div class="header-content text-center table">
                 <div class="table-cell">
                   <h1 class="site-title">

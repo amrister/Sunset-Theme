@@ -97,4 +97,14 @@ $(function(){
       });
   })
 
+<<<<<<< Updated upstream
+=======
+  // Adjust Siebar
+  $(document).on('click','.js-toggleSidebar',function(){
+    $('.sunset-sidebar').toggleClass('closed-sidebar');
+    $('body').toggleClass('no-scroll');
+    $('.sidebar-overlay').fadeToggle(320);
+  });
+
+>>>>>>> Stashed changes
 })
