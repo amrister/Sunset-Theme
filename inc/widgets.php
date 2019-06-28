@@ -79,6 +79,17 @@ add_filter( 'widget_tag_cloud_args', 'sunset_tag_cloud_change');
 
 /*
     ===============================
+      Edit Category link
+    ===============================
+*/
+function susnet_edit_widget_cat_link($links){
+  $links = str_replace('</a> (','</a><span>',$links);
+  $links = str_replace(')','</span>',$links);
+  return $links;
+}
+add_action('wp_list_categories','susnet_edit_widget_cat_link');
+/*
+    ===============================
       Get and Set View Count
     ===============================
 */

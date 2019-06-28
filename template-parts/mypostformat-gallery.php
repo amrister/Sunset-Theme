@@ -3,11 +3,12 @@
 @packge sunset-theme
 	This Template For Gallery Post Format
 */
-$showClass = get_query_var( 'post-show');
+	global $detect; 
+	$showClass = get_query_var( 'post-show');
 ?>
 <article <?php post_class(array('gallery-format',$showClass));?> id="post-<?php the_ID(); ?>">
 	<div class="post-content">
-		<?php if (sunset_get_attachment()):?>
+		<?php if (sunset_get_attachment() && !$detect->isMobile() && !$detect->isTablet()):?>
 			<div id="<?php the_ID(); ?>" class="carousel gallery slide" data-ride="carousel">
 			<div class="carousel-inner">
 					<?php

@@ -145,11 +145,11 @@
 		}
 		return -1;
 	}
-	/*
-	  	=======================================
-	     	Get Post Navigations to single.php
-	    =======================================
-	*/
+/*
+  	=======================================
+     	Get Post Navigations to single.php
+    =======================================
+*/
 	function sunset_post_navigation(){
 
 		$prev = get_previous_post_link( '<div class="post-nav-link"><span class="sunset-icon sunset-chevron-left"></span>%link</div>', '%title' );
@@ -196,8 +196,6 @@
 	}
 	add_filter( 'the_content', 'sunset_sharing_options'); // Mean TO Do fn in a certain situation
 																												// Situation Here is  when the_content() function is caled
-
-
 /*
   	=================================================
      	Get custom navigations for comments pages
@@ -226,3 +224,14 @@ function sunset_get_comments_nav(){
 	}
 	add_action('phpmailer_init', 'mailtrap');
 */
+
+/*
+		=======================================
+			Initialize Mobile Detect Vairable
+		=======================================
+*/
+	function sunset_mobile_detection(){
+		global $detect;
+		$detect = new Mobile_Detect;
+	}
+	add_action( 'after_setup_theme', 'sunset_mobile_detection');
