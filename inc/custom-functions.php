@@ -208,3 +208,21 @@ function sunset_get_comments_nav(){
 			require( get_template_directory().'/template-parts/sunset-comment-nav.php' );
 	// }
 }
+
+/*
+  	=================================================
+     	mailtrap to test contact form email send
+    =================================================
+*/
+
+/*
+	function mailtrap($phpmailer) {
+	  $phpmailer->isSMTP();
+	  $phpmailer->Host = 'smtp.mailtrap.io';
+	  $phpmailer->SMTPAuth = true;
+	  $phpmailer->Port = 2525;
+	  $phpmailer->Username = 'df8a25f8148c9b';
+	  $phpmailer->Password = '3ef728b5945361';
+	}
+	add_action('phpmailer_init', 'mailtrap');
+*/

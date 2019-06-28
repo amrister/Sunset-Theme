@@ -1,3 +1,4 @@
+
 /* -------------------------- Start Post ---------------------------------*/
 .posts-container{
   article{
@@ -10,7 +11,7 @@
     }
   }
 }
-.post{
+.post,.type-post,.page{
     padding-top: 50px;
     margin-bottom: 35px;
     padding: 50px calc( 140px - 30px) 0;
@@ -179,6 +180,7 @@
         display: block;
         width: 100%;
         line-height: 0;
+        cursor: pointer;
         // background-color: rgba(#000,0.8);
         @include animate('background',220ms);
         &.left{

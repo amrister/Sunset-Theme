@@ -4,12 +4,19 @@
 	@package Sunset-theme
   This is Template For Ajax Functions
 
+*/
+
+  add_action('wp_ajax_nopriv_sunset_load_more','sunset_load_more'); // When User Call Function by ajax evenif not logged
+  add_action('wp_ajax_sunset_load_more','sunset_load_more'); // When User Call Function by ajax and he logged
+
+  add_action( 'wp_ajax_nopriv_sunset_contact_form_save', 'sunset_save_contact');
+  add_action( 'wp_ajax_sunset_contact_form_save', 'sunset_save_contact');
+
+/*
   ==============================
   Load More Posts in Home Page
   ==============================
 */
-  add_action('wp_ajax_nopriv_sunset_load_more','sunset_load_more'); // When User Call Function by ajax evenif not logged
-  add_action('wp_ajax_sunset_load_more','sunset_load_more'); // When User Call Function by ajax and he logged
   function sunset_load_more(){
 
     $paged = $_POST['page'] + 1;
@@ -70,4 +77,41 @@
     }else{
       return $output;
     }
+  }
+
+/*
+  =====================================
+    Save user Data from Contact Form
+  =====================================
+*/
+  function sunset_save_contact(){
+
+    $name = wp_strip_all_tags( $_POST['name'] );
+    $email = wp_strip_all_tags( $_POST['email'] );
+    $message = wp_strip_all_tags( $_POST['message'] );
+
+    $postArr = array(
+      'post_type' => 'sunset-contact',
+      'post_status' => 'publish',
+      'post_title' => $name,
+      'post_content' => $message,
+      'post_author' => 1,
+    );
+    $postID = wp_insert_post( $postArr );
+
+    // Sending Email
+    if( $postID !== 0 ){
+        $to = get_bloginfo( 'admin_email');
+        $subject= 'Sunset Contact Form - '.$email;
+        $headers[]= 'From: '.get_bloginfo('name').' <'.$to.'>';
+        $headers[]= 'Reply-to: '.$name.' <'.$email.'>';
+        $headers[]= 'Content-Type: text/html: Charset=UTF-8';
+        wp_mail( $to, $subject, $message, $headers );
+    }
+
+
+    // Returning response
+    echo $postID;
+
+    die();
   }

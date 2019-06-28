@@ -3,7 +3,7 @@
 /*
 @package Sunset-theme
   =========================================
-   Include Post Formats
+   Contact Post Type
   =========================================
 */
 

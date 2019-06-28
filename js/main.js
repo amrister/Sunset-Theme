@@ -103,11 +103,71 @@ $(function(){
           }
       });
   })
+
   // Adjust Siebar
   $(document).on('click','.js-toggleSidebar',function(){
     $('.sunset-sidebar').toggleClass('closed-sidebar');
     $('body').toggleClass('no-scroll');
     $('.sidebar-overlay').fadeToggle(320);
+  });
+
+  // Contact Form Submition
+  $('#js-ContactForm').on('submit',function(e){
+
+    e.preventDefault();
+    // Define Variables
+    var form = $(this),
+        name = form.find('#name').val(),
+        email = form.find('#email').val(),
+        message = form.find('#message').val(),
+        ajaxurl = form.data('url');
+
+    //Inputs Validition
+    if ( name === '' ){
+      form.find('#name').addClass('is-invalid').next().slideDown(320);
+      return;
+    }else{
+      form.find('#name').removeClass('is-invalid').next().slideUp(320);
+    }
+
+    if ( email === '' ){
+      form.find('#email').addClass('is-invalid').next().slideDown(320);
+      return;
+    }
+    else{
+      form.find('#email').removeClass('is-invalid').next().slideUp(320);
+    }
+
+    if ( message === '' ){
+      form.find('#message').addClass('is-invalid').next().slideDown(320);
+      return;
+    }
+    else{
+      form.find('#message').removeClass('is-invalid').next().slideUp(320);
+    }
+    
+    form.find('.processing-feedback').slideDown(320).siblings().slideUp();
+    $.ajax({
+      url : ajaxurl,
+      type : 'post',
+      data : {
+        name : name,
+        email : email,
+        message : message,
+        action : 'sunset_contact_form_save'
+      },
+      error : function ( response ) {
+        console.log(response);
+      },
+      success : function ( response ) {
+        if ( response == 0){
+          form.find('.invalid-feedback').slideDown(320).siblings().slideUp();
+        } else{
+          form.find('.valid-feedback').slideDown(320).siblings().slideUp();
+        }
+      }
+    });
+
   });
 
 })
