@@ -16,6 +16,9 @@ if(!empty($cotnactActivation)){
   add_filter( 'manage_sunset-contact_posts_columns', 'sunset_messages_columns' );
   add_action( 'manage_sunset-contact_posts_custom_column', 'sunset_messages_custom_columns', 10, 2); // 10 is when to do action , 2 is number of Pararmters
 
+  // Add Meta Boxes
+  add_action( 'add_meta_boxes', 'sunset_contact_add_meta_box' );
+  add_action( 'save_post', 'sunset_contact_save_email');
 }
 
 // Register Message Post Type
@@ -41,6 +44,7 @@ function sunset_custom_post_type(){
     );
     register_post_type('sunset-contact',$args);
 }
+
 // Customize New Columns
 function sunset_messages_columns($columns){ // $columns is Passed For The Function By Filter
   $newColumns = array();
@@ -56,7 +60,42 @@ function sunset_messages_custom_columns( $column, $post_id){
        echo get_the_excerpt();
       break;
     case 'email':
-      echo "Email Address";
+      $email =  get_post_meta( $post_id, '_contact_email_field', true);
+      echo '<a href="mailto: '.$email.'">'.$email.'</a>';
       break;
   }
+}
+
+// Email Meta Box
+function sunset_contact_add_meta_box () {
+  add_meta_box( 'email_contact', 'User Email Address', 'sunset_contact_email_callback', 'sunset-contact' ,'side');
+}
+function  sunset_contact_email_callback($post){
+  wp_nonce_field( 'sunset_contact_save_email', 'sunset_email_meta_nonce');
+
+  $value = get_post_meta($post->ID,'_contact_email_field',true);
+
+  echo '<label class="components-base-control__label" for="sunset_contact_email_field">Email Address: </label>';
+  echo '<input class="components-text-control__input" type="text" name="sunset_contact_email_field" id="sunset_contact_email_field" value="'.$value.'">';
+}
+// Check Before Save
+function sunset_contact_save_email( $post_id ){
+  if( !isset($_POST['sunset_email_meta_nonce'])){
+    return;
+  }
+  if( !wp_verify_nonce( $_POST['sunset_email_meta_nonce'], 'sunset_contact_save_email') ){
+    return;
+  }
+  if( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ){
+    return;
+  }
+  if( !current_user_can( 'edit_post', $post_id)){
+    return;
+  }
+  if( !isset( $_POST['sunset_contact_email_field'] ) ){
+    return;
+  }
+
+  $meta_data = sanitize_text_field( $_POST['sunset_contact_email_field'] );
+  update_post_meta( $post_id, '_contact_email_field', $meta_data);
 }

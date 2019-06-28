@@ -96,6 +96,9 @@
       'post_title' => $name,
       'post_content' => $message,
       'post_author' => 1,
+      'meta_input' => array(
+        '_contact_email_field' => $email,
+      ),
     );
     $postID = wp_insert_post( $postArr );
 
