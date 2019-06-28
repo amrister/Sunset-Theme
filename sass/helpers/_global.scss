@@ -19,9 +19,18 @@ a{
     text-decoration: none;
   }
 }
-
+textarea{
+  resize: none;
+}
 /* ----------------------------- End Global -----------------------------*/
 /* ----------------------------- Start Framework -----------------------------*/
+.user-error-msg{
+  display: none;
+  color: #c50000;
+  font-size: 12px;
+  position: absolute;
+  bottom: -5px;
+}
 .sunset-tooltip,.sunset-popover{
   color: rgb(205, 27, 88);
   font-weight: 500;

@@ -114,8 +114,18 @@ a {
   a:focus, a:hover {
     text-decoration: none; }
 
+textarea {
+  resize: none; }
+
 /* ----------------------------- End Global -----------------------------*/
 /* ----------------------------- Start Framework -----------------------------*/
+.user-error-msg {
+  display: none;
+  color: #c50000;
+  font-size: 12px;
+  position: absolute;
+  bottom: -5px; }
+
 .sunset-tooltip, .sunset-popover {
   color: #cd1b58;
   font-weight: 500;
@@ -916,5 +926,32 @@ header .row > * {
   top: 15px; }
 
 /* -------------------------- End Post ---------------------------------*/
+/* -------------------------- Start Contact Form -------------------------------*/
+.sunset-contact-form {
+  margin-top: 60px;
+  position: relative; }
+  .sunset-contact-form .form-group {
+    padding-bottom: 20px;
+    position: relative; }
+    .sunset-contact-form .form-group .error-message {
+      background-color: #f3f3f3;
+      border-color: #aa0909; }
+  .sunset-contact-form .feedbacks {
+    position: relative;
+    height: 50px; }
+    .sunset-contact-form .feedbacks p {
+      display: none;
+      position: absolute;
+      top: 5px;
+      font-size: 14px;
+      width: 50%; }
+      .sunset-contact-form .feedbacks p.processing-feedback {
+        color: #007dd7; }
+
+.contact .post-text {
+  width: 80%;
+  margin: 50px auto; }
+
+/* -------------------------- End Contact Form ---------------------------------*/
 
 /*# sourceMappingURL=master.css.map */

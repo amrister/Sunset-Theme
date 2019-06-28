@@ -3,11 +3,11 @@
 	@package Sunset-theme
   This Template is Shortcodes
   ===========================
-    Tooltip With Shortcodes
+    Tooltip With Shortcode
   ===========================
 */
-  // [tooltip placement='top' title='This is title of tooltip '] This is tooltip content [/tooltip]
   function sunset_tooltip( $atts, $content = null ){
+    // [tooltip placement='top' title='This is title of tooltip '] This is tooltip content [/tooltip]
 
     // Get the attributes
     $result = shortcode_atts(
@@ -27,7 +27,7 @@
 
 /*
 	===========================
-    PopUp With Shortcodes
+    PopUp With Shortcode
   ===========================
 */
   function sunset_popover( $atts , $content = null){
@@ -47,3 +47,24 @@
     return '<span class="sunset-popover" data-toggle="popover" data-placement="'.$result['placement'].'" title="'.$result['title'].'" data-content="'.$result['content'].'" data-trigger="'.$result['trigger'].'">'.$content.'</span>';
   };
   add_shortcode( 'popover' , 'sunset_popover' );
+
+/*
+	===========================
+    Contact Page Shortcode
+  ===========================
+*/
+function sunset_contact_page( $atts, $content = null){
+
+  //[contact_form]
+  $atts = shortcode_atts(
+    array(),
+    $atts,
+    'contact_form'
+  );
+
+  ob_start(); // Sva every comming output in buffer
+  include 'templates/contact-form.php';
+  return ob_get_clean(); // release buffer
+
+}
+add_shortcode( 'contact_form', 'sunset_contact_page' );

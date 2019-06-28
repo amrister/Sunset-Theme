@@ -1,0 +1,32 @@
+/* -------------------------- Start Contact Form -------------------------------*/
+.sunset-contact-form{
+    margin-top: 60px;
+    position: relative;
+    .form-group{
+      padding-bottom: 20px;
+      position: relative;
+      .error-message{
+        background-color: #f3f3f3;
+        border-color: rgb(170, 9, 9);
+      }
+    }
+    .feedbacks{
+      position: relative;
+      height: 50px;
+      p{
+        display: none;
+        position: absolute;
+        top: 5px;
+        font-size: 14px;
+        width: 50%;
+        &.processing-feedback{
+          color: #007dd7;
+        }
+      }
+    }
+}
+.contact .post-text{
+  width: 80%;
+  margin: 50px auto ;
+}
+/* -------------------------- End Contact Form ---------------------------------*/
