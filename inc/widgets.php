@@ -87,7 +87,8 @@ function susnet_edit_widget_cat_link($links){
   $links = str_replace(')','</span>',$links);
   return $links;
 }
-add_action('wp_list_categories','susnet_edit_widget_cat_link');
+add_filter('wp_list_categories','susnet_edit_widget_cat_link');
+
 /*
     ===============================
       Get and Set View Count
